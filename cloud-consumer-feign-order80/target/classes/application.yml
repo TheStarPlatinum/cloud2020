@@ -1,0 +1,21 @@
+server:
+  port: 80
+
+eureka:
+  client:
+    #表示自己是否入驻eureka 默认为true
+    register-with-eureka: true
+    #是否从EurekaServer抓取已有注册信息 默认为true 单节点无所谓集群必须设为true才能配合ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      #      defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+
+ribbon:
+  #超时时间
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+logging:
+  level:
+    #以什么级别监控哪个接口
+    com.ydx.springcloud.service.PaymentFeignService: debug
